@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   background-color: #e8ecf1;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 .reative {
   position: relative;
