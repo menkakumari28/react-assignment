@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { FaLock } from "react-icons/fa"; 
-import { FaEye, FaEyeSlash } from "react-icons/fa"; 
+import { FaLock } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const PasswordInput = ({ label, value, onChange,placeholder }) => {
+const PasswordInput = ({ label, value, onChange, placeholder }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (

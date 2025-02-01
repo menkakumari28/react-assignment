@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const InputField = ({
+const Input = ({
   label,
   type = "text",
   placeholder = "enter text",
@@ -60,4 +60,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default Input;

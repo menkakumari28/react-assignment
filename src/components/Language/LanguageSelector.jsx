@@ -33,10 +33,7 @@ const LanguageSelector = ({ onLanguageChange }) => {
 
   return (
     <div className="mb-4 flex-label">
-      <label
-        htmlFor="language-select"
-        className="block text-left text-black-700 font-medium mb-1"
-      >
+      <label className="block text-left text-black-700 font-medium mb-1">
         Language :
       </label>
       <div className="relative width-80">
@@ -47,7 +44,6 @@ const LanguageSelector = ({ onLanguageChange }) => {
 
         {/* Language Dropdown */}
         <select
-          id="language-select"
           value={selectedLanguage}
           onChange={handleChange}
           className="w-full p-2 text-gray-500 pl-10 pr-4 border border-balck-500 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer appearance-none"
