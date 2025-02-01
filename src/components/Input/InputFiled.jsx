@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Input = ({
   label,
@@ -12,6 +12,11 @@ const Input = ({
 }) => {
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (value.length === 0) {
+      setError("");
+    }
+  }, [value]);
   // Email Validation (Corporate only, no Gmail, Outlook, Yahoo, etc.)
   const handleChange = (e) => {
     const newValue = e.target.value;
