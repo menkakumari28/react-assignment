@@ -12,6 +12,10 @@ function App() {
         </a>
         <LoginForm />
       </div>
+      <p className="copyright">
+          copyright 2024 Noventiq |Powered by Noventiq{" "}
+        </p>
+
     </div>
   );
 }
