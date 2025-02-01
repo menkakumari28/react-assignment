@@ -5,29 +5,28 @@ import ToggleSwitch from "../ToggleSwitch";
 import { FaEnvelope } from "react-icons/fa";
 import PasswordInput from "../Password/PasswordInput";
 import LanguageSelector from "../Language/LanguageSelector";
+import Popup from "../Popup";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleLanguageChange = (lang) => {
     console.log("Selected Language:", lang);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isCorporateEmail(email)) {
-      alert("Please use a corporate email address.");
-      return;
-    }
-    alert("Login successful!");
+    setShowPopup(true); // Show popup on successful login
   };
 
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg "
+        className="bg-white p-6 rounded-lg shadow-lg"
       >
-        {/* <h2 className="text-2xl font-bold mb-4 text-gray-800">Login</h2> */}
         <Input
           label="Email :"
           placeholder="Enter Email"
@@ -35,10 +34,10 @@ const LoginForm = () => {
           value={email}
           onChange={setEmail}
           icon={<FaEnvelope />}
-          validateEmail={true} // Enables email validation
-          required
+          validateEmail={true}
+          // required
         />
-        <div className="reative">
+        <div className="relative">
           <PasswordInput
             label="Password :"
             placeholder="Enter Password"
@@ -50,14 +49,22 @@ const LoginForm = () => {
           </p>
         </div>
         <LanguageSelector onLanguageChange={handleLanguageChange} />
-        <div className="toggle-switch">
+        <div className="toggle-switch flex items-center">
           <ToggleSwitch />
-          <p className="cursor-pointer">Remember Me</p>
+          <p className="ml-2 cursor-pointer">Remember Me</p>
         </div>
+        <Button type="submit" className="mt-4">
+          Login
+        </Button>
       </form>
-      <Button type="submit" className="mt-4">
-        Login
-      </Button>
+
+      {/* Show Popup when login is successful */}
+      {showPopup && (
+        <Popup
+          message="Login successful!"
+          onClose={() => setShowPopup(false)}
+        />
+      )}
     </>
   );
 };
