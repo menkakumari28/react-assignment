@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 
-const Input = ({ label, type,text, value, onChange, icon, validateEmail, ...props }) => {
+const InputField = ({
+  label,
+  type = "text",
+  placeholder = "enter text",
+  value,
+  onChange,
+  icon,
+  validateEmail,
+  ...props
+}) => {
   const [error, setError] = useState("");
 
   // Email Validation (Corporate only, no Gmail, Outlook, Yahoo, etc.)
@@ -9,7 +18,8 @@ const Input = ({ label, type,text, value, onChange, icon, validateEmail, ...prop
     onChange(newValue);
 
     if (validateEmail) {
-      const corporateEmailRegex = /^[a-zA-Z0-9._%+-]+@(?!gmail\.com|outlook\.com|yahoo\.com)([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+      const corporateEmailRegex =
+        /^[a-zA-Z0-9._%+-]+@(?!gmail\.com|outlook\.com|yahoo\.com)([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
       if (!corporateEmailRegex.test(newValue)) {
         setError("Only corporate email addresses are allowed.");
       } else {
@@ -35,9 +45,11 @@ const Input = ({ label, type,text, value, onChange, icon, validateEmail, ...prop
         <input
           type={type}
           value={value}
-          placeholder={text}
+          placeholder={placeholder}
           onChange={handleChange}
-          className={`w-full p-2 ${icon ? "pl-10" : "pl-3"} border border-balck-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          className={`w-full p-2 ${
+            icon ? "pl-10" : "pl-3"
+          } border border-balck-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
           {...props}
         />
 
@@ -48,4 +60,4 @@ const Input = ({ label, type,text, value, onChange, icon, validateEmail, ...prop
   );
 };
 
-export default Input;
+export default InputField;

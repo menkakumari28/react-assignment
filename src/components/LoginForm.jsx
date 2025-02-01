@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Input from "./InputFiled";
 import Button from "./Button";
 import ToggleSwitch from "./ToggleSwitch";
 import { FaEnvelope } from "react-icons/fa";
 import PasswordInput from "./PasswordInput";
 import LanguageSelector from "./LanguageSelector";
+import InputField from "./InputFiled";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,9 +28,9 @@ const LoginForm = () => {
         className="bg-white p-6 rounded-lg shadow-lg "
       >
         {/* <h2 className="text-2xl font-bold mb-4 text-gray-800">Login</h2> */}
-        <Input
+        <InputField
           label="Email :"
-          text="Enter Email"
+          placeholder="Enter Email"
           type="email"
           value={email}
           onChange={setEmail}

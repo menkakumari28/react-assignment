@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./assets/images/logo.svg";
 import "./App.css";
-import LoginForm from "./assets/components/LoginForm";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
