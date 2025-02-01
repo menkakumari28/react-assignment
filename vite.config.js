@@ -7,11 +7,6 @@ export default defineConfig({
     port: 3000,
   },
   plugins: [tailwindcss()],
-  build: {
-    rollupOptions: {
-      external: ["react-icons/fa"],
-    },
-  },
   test: {
     globals: true,
     environment: "jsdom",
