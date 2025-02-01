@@ -7,10 +7,4 @@ export default defineConfig({
     port: 3000,
   },
   plugins: [tailwindcss()],
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./src/tests/setupTests.js",
-    include: ["src/**/*.test.jsx"],
-  },
 });

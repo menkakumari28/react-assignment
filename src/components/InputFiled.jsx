@@ -1,63 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 
-const InputField = ({
-  label,
-  type = "text",
-  placeholder = "enter text",
-  value,
-  onChange,
-  icon,
-  validateEmail,
-  ...props
-}) => {
-  const [error, setError] = useState("");
-
-  // Email Validation (Corporate only, no Gmail, Outlook, Yahoo, etc.)
-  const handleChange = (e) => {
-    const newValue = e.target.value;
-    onChange(newValue);
-
-    if (validateEmail) {
-      const corporateEmailRegex =
-        /^[a-zA-Z0-9._%+-]+@(?!gmail\.com|outlook\.com|yahoo\.com)([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-      if (!corporateEmailRegex.test(newValue)) {
-        setError("Only corporate email addresses are allowed.");
-      } else {
-        setError("");
-      }
-    }
-  };
-
+/**
+ * Input Component
+ *
+ * A reusable input field with a label. Supports all standard input attributes.
+ *
+ * @component
+ * @example
+ * <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+ *
+ * @props
+ * - label: string - Input label.
+ * - type: string - Input type (e.g., "text", "email").
+ * - value: string - Input value.
+ * - onChange: function - Handles input changes.
+ * - ...props: object - Additional input attributes (e.g., placeholder, required).
+ *
+ * @returns {JSX.Element} A labeled input field.
+ */
+const Input = ({ label, type, value, onChange, ...props }) => {
   return (
-    <div className="mb-7 flex-label">
-      <label className="block text-left text-black-700 font-medium mb-1">
+    <div className="mb-4 ">
+      <label className="block text-left text-gray-700 font-medium mb-1">
         {label}
       </label>
-      <div className="relative w-full">
-        {/* Icon (Left Side) */}
-        {icon && (
-          <span className="absolute inset-y-0 left-3 flex items-center text-black-500">
-            {icon}
-          </span>
-        )}
-
-        {/* Input Field */}
-        <input
-          type={type}
-          value={value}
-          placeholder={placeholder}
-          onChange={handleChange}
-          className={`w-full p-2 ${
-            icon ? "pl-10" : "pl-3"
-          } border border-balck-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          {...props}
-        />
-
-        {/* Validation Error Message */}
-        {error && <p className="text-red-500 error mt-1">{error}</p>}
-      </div>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        className="w-full p-2 border border-color rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        {...props}
+      />
     </div>
   );
 };
 
-export default InputField;
+export default Input;
