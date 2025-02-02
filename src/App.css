@@ -102,6 +102,10 @@
     font-size: 11px;
     text-align: left;
   }
+  .validation-errors {
+    font-size: 11px;
+    margin-left: 0;
+  }
   .toggle-switch {
     margin-left: 0;
   }
