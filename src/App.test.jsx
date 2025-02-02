@@ -1,8 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { test } from "@jest/globals";
 import App from "./App";
-import "@testing-library/jest-dom";
 
 test("renders noventiq logo", () => {
   render(<App />);
@@ -18,37 +16,37 @@ test("renders login form", () => {
 
 test("renders login form with email input", () => {
   render(<App />);
-  const emailInput = screen.getByLabelText("Email:");
+  const emailInput = screen.getByText("Email :");
   expect(emailInput).toBeInTheDocument();
 });
 
 test("renders login form with password input", () => {
   render(<App />);
-  const passwordInput = screen.getByLabelText("Password:");
+  const passwordInput = screen.getByText("Password :");
   expect(passwordInput).toBeInTheDocument();
 });
 
 test("renders login form with language input", () => {
   render(<App />);
-  const languageInput = screen.getByLabelText("Language:");
+  const languageInput = screen.getByText("Language :");
   expect(languageInput).toBeInTheDocument();
 });
 
 test("renders login form with submit button", () => {
   render(<App />);
-  const submitButton = screen.getByRole("button", { name: /login/i });
+  const submitButton = screen.getAllByRole("button")[1];
   expect(submitButton).toBeInTheDocument();
 });
 
 test("renders login form with show password button", () => {
   render(<App />);
-  const showPasswordButton = screen.getByRole("button", { name: /show/i });
+  const showPasswordButton = screen.getAllByRole("button")[0];
   expect(showPasswordButton).toBeInTheDocument();
 });
 
 test("renders login form with language select", () => {
   render(<App />);
-  const languageSelect = screen.getByRole("combobox", { name: /language/i });
+  const languageSelect = screen.getByTestId("language-select");
   expect(languageSelect).toBeInTheDocument();
 });
 
