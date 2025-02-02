@@ -26,7 +26,6 @@ const LoginForm = () => {
   }, [email, password]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     if (!email || !password) {
       setValidationError("Please enter email and password");
       return;
@@ -46,7 +45,6 @@ const LoginForm = () => {
     <>
       <form
         data-testid="login-form"
-        onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-lg"
       >
         <Input
@@ -77,16 +75,16 @@ const LoginForm = () => {
           <Switch rememberMe={rememberMe} setRememberMe={setRememberMe} />
           <p className="ml-2 cursor-pointer">Remember Me</p>
         </div>
-        <Button type="submit" className="mt-4">
-          Login
-        </Button>
+       
         {validationError && (
           <p data-testid="validation-error" className="text-red-500 mt-2">
             {validationError}
           </p>
         )}
       </form>
-
+      <Button type="button" className="mt-4" onClick={handleSubmit}>
+          Login
+        </Button>
       {/* Show Popup when login is successful */}
       {showPopup && (
         <Popup
