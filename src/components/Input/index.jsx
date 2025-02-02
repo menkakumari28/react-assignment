@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const Input = ({
   label,
   type = "text",
-  placeholder = "enter text",
+  placeholder = "Enter text",
   value,
   onChange,
   icon,
@@ -13,14 +13,14 @@ const Input = ({
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (value.length === 0) {
+    if (value?.length === 0) {
       setError("");
     }
   }, [value]);
+
   // Email Validation (Corporate only, no Gmail, Outlook, Yahoo, etc.)
   const handleChange = (e) => {
     const newValue = e.target.value;
-    onChange(newValue);
 
     if (validateEmail) {
       const corporateEmailRegex =
@@ -31,6 +31,8 @@ const Input = ({
         setError("");
       }
     }
+    // Once validated, update the value
+    onChange(newValue);
   };
 
   return (

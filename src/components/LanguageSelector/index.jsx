@@ -7,19 +7,15 @@ const languages = [
   { code: "ta", label: "தமிழ் (Tamil)" }, // Add more Indian languages if needed
 ];
 
-const LanguageSelector = ({ onLanguageChange }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
-
+const LanguageSelector = ({ onLanguageChange, selectedLanguage }) => {
   // Detect browser language on component mount
   useEffect(() => {
     const browserLang = navigator.language.slice(0, 2); // Get first two letters
     const supportedLang = languages.find((lang) => lang.code === browserLang);
 
     if (supportedLang) {
-      setSelectedLanguage(browserLang);
       onLanguageChange(browserLang);
     } else {
-      setSelectedLanguage("en"); // Default to English
       onLanguageChange("en");
     }
   }, [onLanguageChange]);
@@ -27,13 +23,15 @@ const LanguageSelector = ({ onLanguageChange }) => {
   // Handle language change
   const handleChange = (event) => {
     const newLang = event.target.value;
-    setSelectedLanguage(newLang);
     onLanguageChange(newLang);
   };
 
   return (
     <div className="mb-4 flex-label">
-      <label className="block text-left text-black-700 font-medium mb-1">
+      <label
+        htmlFor="Language"
+        className="block text-left text-black-700 font-medium mb-1"
+      >
         Language :
       </label>
       <div className="relative width-80">
@@ -44,6 +42,7 @@ const LanguageSelector = ({ onLanguageChange }) => {
 
         {/* Language Dropdown */}
         <select
+          data-testid="language-select"
           value={selectedLanguage}
           onChange={handleChange}
           className="w-full p-2 text-gray-500 pl-10 pr-4 border border-balck-500 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer appearance-none"
