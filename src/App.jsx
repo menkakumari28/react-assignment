@@ -5,7 +5,7 @@ import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen ">
+    <div className="flex flex-col items-center justify-center min-h-screen overflow-auto p-4 text-center ">
       <div className="loginForm">
         <a href="https://noventiq.com/" target="_blank">
           <img src={logo} className="logo" alt="noventiq logo" />

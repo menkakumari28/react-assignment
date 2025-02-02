@@ -77,7 +77,7 @@ const LoginForm = () => {
         </div>
        
         {validationError && (
-          <p data-testid="validation-error" className="text-red-500 mt-2">
+          <p data-testid="validation-error" className="text-red-500 mt-2 validation-errors">
             {validationError}
           </p>
         )}
